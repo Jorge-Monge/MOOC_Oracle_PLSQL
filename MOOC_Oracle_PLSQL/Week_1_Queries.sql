@@ -113,7 +113,7 @@ FROM employees
 WHERE employee_id = 178;
 END;
 
-PRINT b_emp_salary
+PRINT b_emp_salary;
 
 BIND variables are scoped to the environment in which they are executed. That means
 that they are available even after the PL/SQL block has run.
@@ -136,3 +136,35 @@ END;
 /
 
 PRINT b_emp_salary;
+
+
+*** PL/SQL LEXICAL UNITS ***
+
+IDENTIFIERS
+https://www.youtube.com/redirect?redir_token=WHHIvxoIf7rNPBJT9IV1z4FfWJh8MTUxNjQyNjMxNkAxNTE2MzM5OTE2&q=https%3A%2F%2Fwww.oracle.com%2Fpls%2Ftopic%2Flookup%3Fctx%3Ddb122%26id%3DLNPLS99973&v=SgsAglyTVC4&event=video_description
+Names given to PL/SQL objects (e.g. variables)
+
+DELIMITERS
+https://www.youtube.com/redirect?redir_token=WHHIvxoIf7rNPBJT9IV1z4FfWJh8MTUxNjQyNjMxNkAxNTE2MzM5OTE2&q=https%3A%2F%2Fwww.oracle.com%2Fpls%2Ftopic%2Flookup%3Fctx%3Ddb122%26id%3DLNPLS189&v=SgsAglyTVC4&event=video_description
+Simple or compound symbols with special meaning in PL/SQL.
+For instance, semi-colon, '--' to start comments,
+|| to concatenate strings
+Examples of compound symbols: /* <comment> */, := (assignment operator)
+
+LITERALS
+Any value that is assigned to a variable. Subclassified in Character Literals,
+Numeric Literals, and Boolean literals.
+
+COMMENTS
+
+*** EXAMPLE OF SEQUENCE ***
+SET SERVEROUTPUT ON
+DECLARE
+v_new_empid NUMBER;
+BEGIN
+v_new_empid := employees_seq.NEXTVAL;
+DBMS_OUTPUT.PUT_LINE('The new employee ID is: ' || v_new_empid);
+END;
+/
+
+CONCEPT OF IMPLICIT DATATYPE CONVERSIONS VS. EXPLICIT DATATYPE CONVERSIONS
