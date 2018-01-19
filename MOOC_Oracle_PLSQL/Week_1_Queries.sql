@@ -168,3 +168,21 @@ END;
 /
 
 CONCEPT OF IMPLICIT DATATYPE CONVERSIONS VS. EXPLICIT DATATYPE CONVERSIONS
+
+QUALIFYING A DECLARE BLOCK SO THAT WE CAN REFER TO THEIR SPECIFIC VARIABLES
+(Maybe from inside an inner block with a variable of the same name)
+
+BEGIN
+	<< outer >> DECLARE
+	v_father_name VARCHAR2(20) := 'Jorge';
+	BEGIN
+		DECLARE
+			v_father_name VARCHAR(20) := 'Pedro';
+		BEGIN
+			DBMS_OUTPUT.PUT_LINE('Name of the father: ' || outer.v_father_name);
+		END;
+		DBMS_OUTPUT.PUT_LINE('Name of the father: ' || v_father_name);
+	END;
+END outer;
+/
+
