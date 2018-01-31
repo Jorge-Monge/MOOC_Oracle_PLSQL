@@ -169,6 +169,25 @@ END;
 
 CONCEPT OF IMPLICIT DATATYPE CONVERSIONS VS. EXPLICIT DATATYPE CONVERSIONS
 
+
 METHODS FOR EXPLICIT DATATYPE CONVERSIONS:
 TO_CHAR(), TO_DATE(), TO_NUMBER()
 v_dateofjoining DATE := TO_DATE('February 02, 2000', 'Month DD, YYY')
+
+QUALIFYING A DECLARE BLOCK SO THAT WE CAN REFER TO THEIR SPECIFIC VARIABLES
+(Maybe from inside an inner block with a variable of the same name)
+
+BEGIN
+	<< outer >> DECLARE
+	v_father_name VARCHAR2(20) := 'Jorge';
+	BEGIN
+		DECLARE
+			v_father_name VARCHAR(20) := 'Pedro';
+		BEGIN
+			DBMS_OUTPUT.PUT_LINE('Name of the father: ' || outer.v_father_name);
+		END;
+		DBMS_OUTPUT.PUT_LINE('Name of the father: ' || v_father_name);
+	END;
+END outer;
+/
+
