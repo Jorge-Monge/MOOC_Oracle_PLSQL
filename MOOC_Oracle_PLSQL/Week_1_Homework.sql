@@ -1,7 +1,7 @@
 ASSIGNMENT 1
 
 Blocks a, c and d will execute with no errors.
-Incorrect: a: DECLARE is needed!
+Incorrect: a: DECLARE is needed! (Actually it does not seem to be needed)
 Incorrect: c: There needs to be some code between the BEGIN and the END!
 
 ASSIGNMENT 3 (variable names)
